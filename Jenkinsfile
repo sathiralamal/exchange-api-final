@@ -6,6 +6,8 @@ pipeline {
             steps {
                 echo 'building the application'
                 bat 'java --version'
+                bat 'echo %JAVA_HOME%'
+                bat 'mvn clean package'
                 bat 'mvn clean install -DskipTests -f pom.xml'
                 bat 'docker build -t stock_app .'
                 bat 'docker tag stock_app:latest 047250084788.dkr.ecr.us-east-2.amazonaws.com/stock_app:latest'
