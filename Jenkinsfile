@@ -6,7 +6,8 @@ pipeline {
             steps {
                 echo 'building the application'
                 bat 'java --version'
-                bat 'echo %JAVA_HOME%'
+                bat 'set JAVA_HOME=C:/Java11/jdk-11.0.8'
+                bat 'set JAVA_HOME=C:/Java11/jdk-11.0.8/bin'
                 bat 'mvn clean package'
                 bat 'mvn clean install -DskipTests -f pom.xml'
                 bat 'docker build -t stock_app .'
