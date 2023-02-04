@@ -1,0 +1,8 @@
+com/stockexchange/service/ExchangeService.class
+com/stockexchange/model/Party.class
+com/stockexchange/ServiceRunner.class
+com/stockexchange/model/Opener.class
+com/stockexchange/controller/ExchangeController.class
+com/stockexchange/model/Stock.class
+com/stockexchange/repository/MockRepository.class
+com/stockexchange/model/Trade.class
