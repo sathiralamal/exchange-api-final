@@ -9,7 +9,6 @@ pipeline {
             steps {
                 echo 'building the application'
                 bat 'java --version'
-                bat 'set JAVA_HOME=C:/Program Files/Java/jdk-11.0.12'
 //              bat 'mvn clean install -DskipTests -f pom.xml'
                 bat 'mvn clean'
                 bat 'mvn install'
