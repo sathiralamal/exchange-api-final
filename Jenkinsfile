@@ -29,7 +29,7 @@ pipeline {
                 withKubeConfig(credentialsId: 'KubeConfig') {
                     bat 'helm version'
                      bat 'helm uninstall exchange-api-helm-chart-1675588362'
-                     bat 'helm install exchange-api -f C:/Users/sathira/Desktop/helm'
+                     bat 'helm install exchange-api -f C:/Users/sathira/Desktop/helm/exchange-api-helm-chart'
                 
                 }
             }
