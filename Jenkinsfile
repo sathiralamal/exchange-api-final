@@ -26,7 +26,7 @@ pipeline {
         stage('Deployment') {
             steps {
                 echo 'Deploying'
-                withKubeConfig(credentialsId: 'Jenkin-kind') {
+                withKubeConfig(credentialsId: 'KubeConfig') {
                     bat 'kubectl get pods'
                      bat 'helm uninstall exchange-api'
                      bat 'helm install exchange-api -f C:/Users/sathira/Desktop/exchange-app/Cloud Computing Applications 20227BUIS027/could-assignment-submit/exchange-api-helm-chart'
