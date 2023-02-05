@@ -17,18 +17,18 @@ pipeline {
             steps {
                 echo 'Push application Push to ECR'
 
-//                 withAWS(credentials: 'aws-cred', region: 'us-east-2') {
-//                     bat 'aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 047250084788.dkr.ecr.us-east-2.amazonaws.com'
-//                     bat 'docker push 047250084788.dkr.ecr.us-east-2.amazonaws.com/stock_app:latest'
-//                 }
+                withAWS(credentials: 'aws-cred', region: 'us-east-2') {
+                    bat 'aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 047250084788.dkr.ecr.us-east-2.amazonaws.com'
+                    bat 'docker push 047250084788.dkr.ecr.us-east-2.amazonaws.com/stock_app:latest'
+                }
             }
         }
         stage('Deployment') {
             steps {
                 echo 'Deploying'
                 withKubeConfig(credentialsId: 'KubeConfig') {
-                     bat 'helm uninstall exchange-api'
-                     bat 'helm install exchange-api -f C:/Users/sathira/Desktop/exchange-app/Cloud Computing Applications 20227BUIS027/could-assignment-submit/exchange-api-helm-chart'
+//                      bat 'helm uninstall exchange-api'
+//                      bat 'helm install exchange-api -f C:/Users/sathira/Desktop/exchange-app/Cloud Computing Applications 20227BUIS027/could-assignment-submit/exchange-api-helm-chart'
                 
                 }
             }
