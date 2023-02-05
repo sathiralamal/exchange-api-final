@@ -23,7 +23,7 @@ pipeline {
                 }
             }
         }
-        stage('Deploy') {
+        stage('Deployment') {
             steps {
                 echo 'Deploying'
                  bat 'helm uninstall exchange-api'
