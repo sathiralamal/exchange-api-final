@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    tools{
+        mvn 'Maven 3.8.7'
+    }
     stages {
         
         stage('Build Docker image') {
