@@ -9,9 +9,8 @@ pipeline {
             steps {
                 echo 'building the application'
                 bat 'java --version'
+                bat 'mvn -U clean install'
 //              bat 'mvn clean install -DskipTests -f pom.xml'
-                bat 'mvn clean'
-                bat 'mvn install'
                 bat 'docker build -t stock_app .'
                 bat 'docker tag stock_app:latest 047250084788.dkr.ecr.us-east-2.amazonaws.com/stock_app:latest'
             }
