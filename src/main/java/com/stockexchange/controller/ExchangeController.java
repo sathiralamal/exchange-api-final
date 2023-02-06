@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalTime;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -21,6 +23,13 @@ public class ExchangeController {
     private final static Logger logger = LoggerFactory.getLogger(ExchangeController.class);
     @Autowired
     private ExchangeService exchangeService;
+
+    @GetMapping(value = "/ping")
+    public ResponseEntity<String> handlePing() {
+        String pingMessage ="version 1 :"+ LocalTime.now().toString();
+        logger.info("invoking controller handler::handlePing()");
+        return new ResponseEntity<>(pingMessage, HttpStatus.ACCEPTED);
+    }
 
     @GetMapping(value = "/view")
     public ResponseEntity<List<StockViewDto>> handleAvailableStock() {
