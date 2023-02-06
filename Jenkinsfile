@@ -25,13 +25,21 @@ pipeline {
         stage('Deployment') {
             steps {
                 echo '=========== Deploying ==========='
-                withKubeConfig(credentialsId: 'KubeConfig') {
+//                 withKubeConfig(credentialsId: 'KubeConfig' , credentialsId: 'Jenkin-kind',  serverUrl: 'https://127.0.0.1:6443/') {
+//
+//                      bat 'helm version'
+//                      bat 'helm uninstall exchange-api'
+//                      bat 'helm install exchange-api C:/Users/sathira/Desktop/helm/exchange-api-helm-chart'
+//
+//                 }
 
-                     bat 'helm version'
-                     bat 'helm uninstall exchange-api'
-                     bat 'helm install exchange-api C:/Users/sathira/Desktop/helm/exchange-api-helm-chart'
-                
-                }
+                  withCredentials([credentialsId: 'KubeConfig' , credentialsId: 'Jenkin-kind']) {
+
+                         bat 'helm version'
+                         bat 'helm uninstall exchange-api'
+                         bat 'helm install exchange-api C:/Users/sathira/Desktop/helm/exchange-api-helm-chart'
+
+                  }
             }
         }
     }
