@@ -33,7 +33,7 @@ pipeline {
 //
 //                 }
 
-                  withCredentials(credentialsId: 'Jenkin-kind']) {
+                  withCredentials(credentialsId: 'Jenkin-kind') {
                          bat 'helm version'
                          bat 'helm uninstall exchange-api'
                          bat 'helm install exchange-api C:/Users/sathira/Desktop/helm/exchange-api-helm-chart'
