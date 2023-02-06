@@ -1,8 +1,8 @@
 pipeline {
     agent any
-   
+
     stages {
-        
+
         stage('Build Docker image') {
             steps {
                 echo '=========== building the application ==========='
@@ -25,6 +25,13 @@ pipeline {
         stage('Deployment') {
             steps {
                 echo '=========== Deploying ==========='
+                 agent {
+                           Kubernetes {
+                             bat 'helm version'
+                             bat 'helm uninstall exchange-api'
+                             bat 'helm install exchange-api C:/Users/sathira/Desktop/helm/exchange-api-helm-chart'
+                           }
+                 }
 //                 withKubeConfig(credentialsId: 'KubeConfig' , credentialsId: 'Jenkin-kind',  serverUrl: 'https://127.0.0.1:6443/') {
 //
 //                      bat 'helm version'
@@ -33,12 +40,12 @@ pipeline {
 //
 //                 }
 
-                    withKubeCredentials(kubectlCredentials: [[credentialsId: 'Jenkin-kind']]) {
-                         bat 'helm version'
-                         bat 'helm uninstall exchange-api'
-                         bat 'helm install exchange-api C:/Users/sathira/Desktop/helm/exchange-api-helm-chart'
-
-                  }
+//                     withKubeCredentials(kubectlCredentials: [[credentialsId: 'Jenkin-kind']]) {
+//                          bat 'helm version'
+//                          bat 'helm uninstall exchange-api'
+//                          bat 'helm install exchange-api C:/Users/sathira/Desktop/helm/exchange-api-helm-chart'
+//
+//                   }
             }
         }
     }
